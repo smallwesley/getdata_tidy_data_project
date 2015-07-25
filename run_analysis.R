@@ -1,0 +1,164 @@
+# -----------------------------------------
+# TOPIC: COURSERA DATASCIENCE GETTING DATA PROJECT
+# AUTHOR: WESLEY SMALL
+#
+# SYNOPSIS:
+#  THE RUN ANALYSIS SCRIPT PERFORMS THE NECESSARY ACTIONS TO
+#  LOAD THE UCI HAR DATASET AND MERGE MULTIPLE FILES OF MEASURED 
+#  CONTENT INTO A SINGLE DATASET
+#
+# THE OVERALL OBJECTIVE IS TO PROVIDE TIDY SUMMARY OF AVERAGES
+# FOR UNIQUE SUBJECT-ACTIVITY-MEASURESURE COMBINATION.
+# 
+# THE INITIAL WORK MUST MERGE LARGER ASSET TOGETHER;
+# SEE FUNCTION BELOW LABELLED: "generateTidyDataset"
+# -----------------------------------------
+# SET UP
+
+# SET WORKING DIRECTORY; Contains the UCI-HAR-Dataset Content Uncompressed
+setwd("~/develop/academic/coursera/datascience/c3-getdata/project1")
+
+# SET BASE FILEPATH USED FOR READ OPERATION TO FOLLOW
+filepathBase <- "./UCI HAR Dataset"
+
+# -----------------------------------------
+# LOAD ACTIVITY LABELS AS METADATA
+dfMetaDataActivityLabels <- read.table(
+    file = paste0(filepathBase,"/activity_labels.txt"),
+    header = FALSE,
+    sep = " ",
+    col.names = c("activity_id","activity_label"))    
+
+# -----------------------------------------
+# LOAD FEATURES LIST AS METADATA FOR COLUMN NAMES
+dfMetaDataFeatureColumnNames <- read.table(
+    file = paste0(filepathBase,"/features.txt"),
+    header = FALSE,
+    sep = " ",
+    col.names = c("feature_id","feature_label"))
+
+# ------------------------------------------
+# FUNCTION: GENERATE TIDY DATASET
+# PARAM: datasetIdentifier (i.e. "train, "test")
+# ANSWER: DATA.FRAME SUBJECTS, ACTIVITIES AND REQUIRED FEATURES
+#
+# SEE INLINE STEP/COMMENTS
+# -----------------------------------------
+generateTidyDataset <- function( datasetIdentifer) {
+    
+    # LOAD SUBJECTS FROM SPECIFIED DATASET
+    filenameSubjects = 
+        paste0(filepathBase,"/",datasetIdentifier,"/subject_",datasetIdentifier,".txt")
+    dfSubjects <- read.table(
+        file = filenameSubjects,
+        header = FALSE,
+        sep = "",
+        stringsAsFactors = FALSE,
+        col.names = c("subject_id"))
+    
+    # LOAD ACTIVITIES FROM SPECIFIED DATASET
+    filenameActivities = 
+        paste0(filepathBase,"/",datasetIdentifier,"/y_",datasetIdentifier,".txt")
+    dfActivities <- read.table(
+        file = filenameActivities,
+        header = FALSE,
+        sep = "",
+        stringsAsFactors = FALSE,
+        col.names = c("activity_id"))
+    
+    # LOAD RAW FEATURES FROM SPECIFIED DATASET
+    filenameFeatures = 
+        paste0(filepathBase,"/",datasetIdentifier,"/X_",datasetIdentifier,".txt")
+    dfFeatures <- read.table(
+        file = filenameFeatures,
+        header = FALSE,
+        sep = "",
+        stringsAsFactors = FALSE,
+        fill = TRUE)
+    
+    # [TIDY] ASSOCIATE FEATURE DATASETS COLUMNS WITH LABEL NAMES
+    # USER THE FEATURE.TXT FILE WITH LABELS PRESET FOR THE 561 COLUMNS
+    names(dfFeatures) = as.vector(dfMetaDataFeatureColumnNames$feature_label)
+    
+    # [TIDY] REDUCE FEATURE COLUMNS DATA.FRAME TO CONTAIN ONLY 
+    #        THOSE FIELDS RELATED TO "MEAN" OR "STANDARD DEVIATION"
+    #        NOTE: USES REGEX EXPRESSION FILTER 
+    #        TO LOGICAL VECTOR OF NECESSARY COLUMNS
+    dfFeaturesSlim <- dfFeatures[,grepl( "-mean\\(\\)|-std\\(\\)",names( dfFeatures))]
+    
+    # GARBAGE COLLECTION: REMOVE FEATURES
+    remove("dfFeatures")
+    
+    # [TIDY] MERGE (JOIN) ACTIVITIES WITH METADATA TO GET LISTING READABLE ACTIVITY 
+    #        LABELS FOR ALL ROWS
+    dfActivities <- merge(dfActivities, 
+                          dfMetaDataActivityLabels, 
+                          by.x = "activity_id", 
+                          by.y = "activity_id")
+    
+    # CREATE
+    dfTidy <- cbind(dfSubjects,dfActivities,dfFeaturesSlim)
+    
+    # GARBAGE COLLECTION: REMOVE DATASET (SCOPE FUNCTION ENVIRONMENT)
+    remove("dfSubjects")
+    remove("dfActivities")
+    remove("dfFeaturesSlim")
+    
+    # RETURN DATA.FRAME
+    dfTidy
+}
+
+# -----------------------------------------
+# LOAD TRAINING AND TEST DATASETS AND BIND TOGETHER
+df <- rbind(
+         generateTidyDataset("train"),
+         generateTidyDataset("test")
+         )
+
+
+# -----------------------------------------
+# MELT DATASET -> 
+#      ID COLUMNS SUBJECT + ACTIVITY
+#      SET REMAINER OF COLUMNS (MEANS/STD) AS VARIABLES
+install.packages("reshape2")
+library("reshape2")
+df1 <- melt(df,
+            id=c("subject_id", "activity_label"),
+            measure.vars=colnames(df)[grepl( "-mean\\(\\)|-std\\(\\)",names( df))]
+)
+
+# -----------------------------------------
+# DCAST TO "SUMMARIZE" MEAN FOR BY SUBJECT/ACTIVITY 
+# FOR EACH FACTOR GROUP MEASUREMENTS VARIABLES
+df2 <- dcast(df1, subject_id + activity_label ~ variable, mean)
+
+# -----------------------------------------
+# [TIDY] NARROW DATASET SUCH A MANNER:
+#    EACH ROW HAS UNIQUE(DISTINCT) COMBINATION OF 
+#     SUBJECT, ACTIVITY, MEASUREMENT AND TOTAL AVERAGE     
+df3 <- melt(df2,
+            id=c("subject_id", "activity_label"),
+            measure.vars=colnames(df2)[grepl( "-mean\\(\\)|-std\\(\\)",names( df2))]
+       )
+
+# -----------------------------------------
+# [TIDY] RESET COLUMN NAMES TO MEANINGFUL IDENTIFIERS
+colnames(df3) <- c("subject_identifier", 
+                   "activity", 
+                   "feature_measurement_name", 
+                   "measurement_total_average")
+
+# -----------------------------------------
+# [TIDY] SORT DATASET
+dfFinal <- df3[order(df3$subject_identifier, df3$activity, df3$feature_measurement_name),]
+
+# -----------------------------------------
+# [TIDY] WRITE OUT FINAL DATASET WORKING DIRECTORY
+filenameFinalDataset <- "./getdata_project_tidy_dataset.txt"
+write.table(file=filenameFinalDataset, 
+          x=dfFinal,
+          row.names = FALSE
+          )
+
+# View
+#View(dfFinal)
