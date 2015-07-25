@@ -125,4 +125,29 @@ Then a filter mechanism was used to extract out the columns that were only relat
 
 ###Field 4: measurement_total_average...
 contains the computed averages each measurement, grouped by factor of activities per and related to a specific subject.
- 
+
+
+## REPORT FROM R:
+
+#### STRUCTURE OF DATA.FRAME
+
+    > str( "getdata_project_tidy_dataset.txt"
+    
+    'data.frame':	924 obs. of  4 variables:
+    $ subject_identifier      : int  2 2 2 2 2 2 2 2 2 2 ...
+    $ activity                : Factor w/ 6 levels "LAYING","SITTING",..: 4 4 4 4 4 4 4 4 4 4 ...
+    $ feature_measurement_name: Factor w/ 66 levels "tBodyAcc-mean()-X",..: 1 2 3 4 5 6 7 8 9 10 ...
+    $ total_average           : num  0.2731 -0.0191 -0.1156 -0.6056 -0.429 ...
+    
+#### SAMPLING OF TIDY RECORDS:
+    
+    > dfFinal[sample(nrow(dfFinal), 8),]
+    subject_identifier           activity    feature_measurement_name total_average
+    387                 13            SITTING       tBodyGyroJerk-std()-X  -0.715772980
+    80                  18            SITTING            tBodyAcc-std()-Z  -0.950753018
+    112                 24             LAYING        tGravityAcc-mean()-Y   0.072950970
+    410                  9   WALKING_UPSTAIRS       tBodyGyroJerk-std()-Z  -0.744656038
+    395                  4   WALKING_UPSTAIRS       tBodyGyroJerk-std()-Y  -0.888412003
+    588                 24             LAYING           fBodyAcc-mean()-Y  -0.611509043
+    334                 20             LAYING           tBodyGyro-std()-Z  -0.460843186
+    358                 12 WALKING_DOWNSTAIRS      tBodyGyroJerk-mean()-Y  -0.042195706

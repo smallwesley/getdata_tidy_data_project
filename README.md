@@ -25,10 +25,14 @@ The raw dataset is obtained from:
 
 ## What makes this Tidy?
 
-The original raw dataset is spread out over multiple files.  We are combining the details of the attribute names for activities identifiers along with a set of 561 fields recording measurements numerous measurements for a serious of test subjects.  We are also combining the training set and test of data into a single dateset to perform grouped averages by subject and activity.  Out of the 561 fields we are only interested in a summary of averages for 66 recorded measurements from the combination of mean and standard deviation measurements.
+The original raw dataset is spread out over multiple files.  We are also combining the training set and test of data into a single dateset to perform grouped averages by subject and activity.  The tidy data focuses on making the it human readable by combining the labels and keynames with the dataset files for activities and features. 
+
+Please note:
+* the original raw features dataset has 561 measurements columns series of test subjects. 
+* For the puspose of this assignment, we are only interested a subset measurements taken, which total 66 fields.
 
 We must transform the data in fews steps:
-1. merge the data together from the various artifacts related to measures provided for the UCI HAR Dataset.
+1. Merge the data together from the various artifacts related to measures provided for the UCI HAR Dataset.
 2. add combine the readable labels to the combination of these files.
 3. reshape the data to perform grouped analysis of the measurements by subject / activity type.
 4. prepare the final dataset for review with proper naming conventions.
@@ -55,8 +59,10 @@ The run_analysis.R that does the following step requested in the project assignm
 
     # SET FILE PATH
     filepath <- "./getdata_project_tidy_dataset.txt"
+    
     # LOAD DATA
-    data <- read.table(file_path, header = TRUE) 
+    data <- read.table(filepath, header = TRUE) 
+    
     # VIEW DATA
     View(data)
 
