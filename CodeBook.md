@@ -1,20 +1,20 @@
 # GETDATA TIDY DATA PROJECT
 ## DATA DICTIONARY
 
-The getdata_project_tidy_dataset.txt is a comma delimited dataset
+The getdata_project_tidy_dataset.txt is a space delimited dataset
 with the following column in this order:
 
 ## FIELD 1: 
 "subject_identifier"
 
-TYPE: INTEGER 
+TYPE: INTEGER (2)
 
 DESC: A unique identifer per subject (person) attributed with numerous measurements of a wearable device
  
 ## FIELD 2: 
 "activity"
 
-TYPE: CHARACTER STRING
+TYPE: CHARACTER STRING (18)
 
 DESC: Activity types are unique labels associated with static or dynamic actions of an subject.  
 	
@@ -30,7 +30,7 @@ List of activity types:
 ## FIELD 3:  
 "feature_measurement_name"
 
-TYPE: CHARACTER STRING
+TYPE: CHARACTER STRING (27)
 
 DESC: The unique names of measurements take from the wearable device. The list of measurements names are drawn from this list:
 
@@ -104,9 +104,9 @@ DESC: The unique names of measurements take from the wearable device. The list o
 ## FIELD 4:
 "measurement_total_average"
 
-TYPE: NUMERIC 
+TYPE: NUMERIC (17)
 
-DESC: The computed average of each measurement.
+DESC: The computed average of each measurement in decimal format.
 	
 * * *	
 

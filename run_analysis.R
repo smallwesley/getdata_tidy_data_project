@@ -13,12 +13,13 @@
 # THE INITIAL WORK MUST MERGE LARGER ASSET TOGETHER;
 # SEE FUNCTION BELOW LABELLED: "generateTidyDataset"
 # -----------------------------------------
-# SET UP
 
 # SET WORKING DIRECTORY; Contains the UCI-HAR-Dataset Content Uncompressed
-setwd("~/develop/academic/coursera/datascience/c3-getdata/project1")
+# UNCOMMENT ALTER TO LOCAL ENVIRONMENT WHEN RUNNING.
+#setwd("~/develop/academic/coursera/datascience/c3-getdata/project1")
 
-# SET BASE FILEPATH USED FOR READ OPERATION TO FOLLOW
+# SET BASE FILEPATH USED FOR READ OPERATION TO FOLLOW (ASSUMES WORKING DIRECTORY)
+# CONTAINS DATASET IN QUESTION
 filepathBase <- "./UCI HAR Dataset"
 
 # -----------------------------------------
@@ -44,7 +45,7 @@ dfMetaDataFeatureColumnNames <- read.table(
 #
 # SEE INLINE STEP/COMMENTS
 # -----------------------------------------
-generateTidyDataset <- function( datasetIdentifer) {
+generateTidyDataset <- function( datasetIdentifier) {
     
     # LOAD SUBJECTS FROM SPECIFIED DATASET
     filenameSubjects = 
@@ -159,6 +160,6 @@ write.table(file=filenameFinalDataset,
           x=dfFinal,
           row.names = FALSE
           )
-
 # View
 #View(dfFinal)
+
