@@ -6,10 +6,10 @@ The purpose of this project is demonstrate the ability to collect, work with, an
 
 This project has the following artifacts in this git respository:
 
-* README.md - This document being currently read,
-* getdata_project_tidy_dataset.txt - The tidy reshaped dataset required for this project assignment
-* CodeBook.md -  A document that describes the variables, the data, and any transformations or work, performed to clean up the data,
-* run_analysis.R - The R code that creates the tidy dataset.  See section below named R Code for more an overview about the code.  Within the codebase are inline documents for detailed steps to load and reshape the tidy dataset.
+* [README.md](README.md) - This document being currently read,
+* [getdata_project_tidy_dataset.txt](getdata_project_tidy_dataset.txt) - The tidy reshaped dataset required for this project assignment
+* [CodeBook.md](CodeBook.md) -  A document that describes the variables, the data, and any transformations or work, performed to clean up the data,
+* [run_analysis.R](run_analysis.R) - The R code that creates the tidy dataset.  See section below named R Code for more an overview about the code.  Within the codebase are inline documents for detailed steps to load and reshape the tidy dataset.
 
 
 ## Background and Synopsis
@@ -22,16 +22,20 @@ The raw dataset is obtained from:
 
 <https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip>
 
+*** Cited: From the Course notes***
+
 
 ## What makes this Tidy?
 
 The original raw dataset is spread out over multiple files.  We are also combining the training set and test of data into a single dateset to perform grouped averages by subject and activity.  The tidy data focuses on making the it human readable by combining the labels and keynames with the dataset files for activities and features. 
 
 Please note:
+
 * the original raw features dataset has 561 measurements columns series of test subjects. 
 * For the puspose of this assignment, we are only interested a subset measurements taken, which total 66 fields.
 
-We must transform the data in fews steps:
+The Samsung Wearables dataset is transformated in fews steps:
+
 1. Merge the data together from the various artifacts related to measures provided for the UCI HAR Dataset.
 2. add combine the readable labels to the combination of these files.
 3. reshape the data to perform grouped analysis of the measurements by subject / activity type.
@@ -58,7 +62,7 @@ The run_analysis.R that does the following step requested in the project assignm
 5. Open newly generate tidy dataset file named **getdata_project_tidy_dataset.txt** in working. 
 
 
-The following code has been provided to load the dataset in R.
+***The following code has been provided to load the dataset in R.***
 
     filepath <- "./getdata_project_tidy_dataset.txt"
     data <- read.table(filepath, header = TRUE) 
