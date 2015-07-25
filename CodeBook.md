@@ -6,15 +6,15 @@ with the following column in this order:
 
 ## FIELD 1: 
 "subject_identifier"
-> TYPE: INTEGER 
-> DESC: A unique identifer per subject (person) attributed with numerous measurements of a wearable device
+TYPE: INTEGER 
+DESC: A unique identifer per subject (person) attributed with numerous measurements of a wearable device
  
 ## FIELD 2: 
 "activity"
-> TYPE: CHARACTER STRING
-> DESC: Activity types are unique labels associated with static or dynamic actions of an subject.  
+TYPE: CHARACTER STRING
+DESC: Activity types are unique labels associated with static or dynamic actions of an subject.  
     
-> List of activity types:
+List of activity types:
     WALKING
     WALKING_UPSTAIRS
     WALKING_DOWNSTAIRS
@@ -24,8 +24,8 @@ with the following column in this order:
   
 ## FIELD 3:  
 "feature_measurement_name"
-> TYPE: CHARACTER STRING
-> DESC: The unique names of measurements take from the wearable device. The list of measurements names are drawn from this list:
+TYPE: CHARACTER STRING
+DESC: The unique names of measurements take from the wearable device. The list of measurements names are drawn from this list:
     tBodyAcc-mean()-X
     tBodyAcc-mean()-Y
     tBodyAcc-mean()-Z
@@ -95,8 +95,8 @@ with the following column in this order:
     
 ## FIELD 4:
 "measurement_total_average"
-> TYPE: NUMERIC 
-> DESC: The computed average of each measurement.
+TYPE: NUMERIC 
+DESC: The computed average of each measurement.
     
 * * *    
 ## Additional Notes:
