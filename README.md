@@ -55,7 +55,10 @@ The run_analysis.R that does the following step requested in the project assignm
 2. Update the script's "setwd" (set working directory) to match if necessary.  Or comment out using the "#"
 3. Extract the contents of the raw dataset achive (zip file) in to the working directory.  You should have a sub folder named **UCI HAR Dataset**.  If named anything else, rename to "UCI HAR Dataset"
 4. Execute R code.
-5. Open newly generate tidy dataset file named **getdata_project_tidy_dataset.txt** in working. The following code has been provided to load the dataset in R.
+5. Open newly generate tidy dataset file named **getdata_project_tidy_dataset.txt** in working. 
+
+
+The following code has been provided to load the dataset in R.
 
     filepath <- "./getdata_project_tidy_dataset.txt"
     data <- read.table(filepath, header = TRUE) 
