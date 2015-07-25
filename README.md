@@ -57,12 +57,7 @@ The run_analysis.R that does the following step requested in the project assignm
 4. Execute R code.
 5. Open newly generate tidy dataset file named **getdata_project_tidy_dataset.txt** in working. The following code has been provided to load the dataset in R.
 
-    # SET FILE PATH
     filepath <- "./getdata_project_tidy_dataset.txt"
-    
-    # LOAD DATA
     data <- read.table(filepath, header = TRUE) 
-    
-    # VIEW DATA
     View(data)
 
