@@ -8,15 +8,14 @@
 #  CONTENT INTO A SINGLE DATASET
 #
 # THE OVERALL OBJECTIVE IS TO PROVIDE TIDY SUMMARY OF AVERAGES
-# FOR UNIQUE SUBJECT-ACTIVITY-MEASURESURE COMBINATION.
+# FOR UNIQUE SUBJECT-ACTIVITY-MEASUREMENT COMBINATION.
 # 
 # THE INITIAL WORK MUST MERGE LARGER ASSET TOGETHER;
 # SEE FUNCTION BELOW LABELLED: "generateTidyDataset"
 # -----------------------------------------
 
-# SET WORKING DIRECTORY; Contains the UCI-HAR-Dataset Content Uncompressed
-# UNCOMMENT ALTER TO LOCAL ENVIRONMENT WHEN RUNNING.
-setwd("~/develop/academic/coursera/datascience/c3-getdata/project1")
+# OPTIONAL SET WORKING DIRECTORY
+#setwd("~/develop/academic/coursera/datascience/c3-getdata/project1")
 
 # SET BASE FILEPATH USED FOR READ OPERATION TO FOLLOW (ASSUMES WORKING DIRECTORY)
 # CONTAINS DATASET IN QUESTION
@@ -128,7 +127,6 @@ df <- rbind(
          generateTidyDataset("test")
          )
 
-
 # -----------------------------------------
 # MELT DATASET -> 
 #      ID COLUMNS SUBJECT + ACTIVITY
@@ -176,5 +174,20 @@ write.table(file=filenameFinalDataset,
             x=dfFinal,
             row.names = FALSE
             )
-# View
-#View(dfFinal)
+
+# CLEAN UP OBJECTS
+rm("filepathBase")
+rm("dfMetaDataActivityLabels", "dfMetaDataFeatureColumnNames")
+rm("generateTidyDataset")
+rm("df","df1","df2","df3")
+rm("filenameFinalDataset","dfFinal")
+
+# [DEBUG] VIEW CONTENTS - UNCOMMENT BELOW TO TEST
+#filepathTidyDataset <- "./getdata_project_tidy_dataset.txt"
+#dfTidyDataset <- read.table(filepathTidyDataset, header = TRUE)
+#dim(dfTidyDataset)
+#str(dfTidyDataset)
+#head(dfTidyDataset)
+#tail(dfTidyDataset)
+#View(dfTidyDataset)
+#remove("filepathTidyDataset", "dfTidyDataset")

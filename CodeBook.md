@@ -1,16 +1,21 @@
 # CODEBOOK FOR GETDATA TIDY DATA PROJECT 
 
-## Synopsis:
+## Overview of Codebook:
 
-The Tidy Data result produced from the **run_analysis.R** is a transmutation of the original Samsumg Wearables UCI HAR Dataset that is provided at:
+The Cookbook provides a detailed data dictionary explanation for the structure of the tidy dataset for this project.
+
+The tidy data result produced from the **run_analysis.R** is a transmutation of the original Samsumg Wearables UCI HAR Dataset that is provided at:
 <https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip>
 
-Only the Samsung training + test data was used to solve this project requirements per the instructions. They were merged together as one large dataset.
+Please note: the Samsung Wearables "training" & "test" dataset are used in the scope of this project.  The content of the Inertia subfolders were not used.
+The test and training sets are merged together as one large dataset during which, the structure is cleaned up to be more tidy.
 The dataset provides a various artifacts give clarity to the various fields (features measurements) and the activity names. 
 The only measurements necessary for scope  of this project were those related to the mean or standard deviation. 
 These feature measurement were extracted based on the names containing "-mean()" and "-std()" respectively.
 
-The tidy dataset is in narrow form with 4 fields.  Each row is contains a unique combination of subject identifier, an activity label and a feature measurement name, and the computed average.   
+The tidy dataset is in narrow long format. 
+It contains 4 fields -> Subject Identifier, Activity Label, Feature Measurement Name, Measurement Total Average.  
+Each row is contains a unique combination of subject identifier, an activity label and a feature measurement name, and the computed average.   
 The computed average was obtained while grouping the subject identifier and activity types with "R" programming operations.
 
 
@@ -187,7 +192,7 @@ This field contains the computed averages each feature measure related to a subj
 
 * * * 
 
-## ADDENDUM A) SAMSUNG FEATURE_INFO DOCUMENT
+## ADDENDUM A) SAMSUNG FEATURE_INFO DOCUMENT##
 
 ###Feature Selection### 
 

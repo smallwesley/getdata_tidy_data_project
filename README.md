@@ -11,6 +11,7 @@ This READ-ME file has the following sections below:
 3. What makes this Tidy
 4. About the R Code -> run_anaylsis.R
 5. Set up & Execution of R Code
+6. Load Tidy Dataset
 
 
 ## Overview
@@ -77,16 +78,24 @@ The run_analysis.R that does the following step requested in the project assignm
 
 ## Set up & Execution of R Code
 
-1. To execute the R code **run_analysis.R**, create a working directory and place this file in that directory.
-2. Update the script's "setwd" (set working directory) to match if necessary.  Or comment out using the "#"
-3. Extract the contents of the raw dataset achive (zip file) in to the working directory.  You should have a sub folder named **UCI HAR Dataset**.  If named anything else, rename to "UCI HAR Dataset"
-4. Execute R code.
-5. Open newly generate tidy dataset file named **getdata_project_tidy_dataset.txt** in working. 
+To execute the R code **run_analysis.R**
 
+1. Place run_analysis.R script in a working directory
+2. Extract the contents of the Samsung UCI HAR Dataset zipped achive in to the working directory.  There should be an **UCI HAR Dataset** subfolder. Under the subfolder should be the training and test folders.
+3. Execute from the working directory 
+    source("./run_analysis.R") 
+
+## Load Tidy Dataset
 
 ***The following code has been provided to load the dataset in R.***
 
-    filepath <- "./getdata_project_tidy_dataset.txt"
-    data <- read.table(filepath, header = TRUE) 
-    View(data)
-
+    filepathTidyDataset <- "./getdata_project_tidy_dataset.txt"
+    dfTidyDataset <- read.table(filepathTidyDataset, header = TRUE)
+    
+    dim(dfTidyDataset)  # VIEW DIMENSIONS
+    str(dfTidyDataset)  # VIEW STRUCTURE (SCHEMA)
+    head(dfTidyDataset) # VIEW TOP FEW LINES
+    tail(dfTidyDataset) # VIEW LAST FEW LINES
+    
+    View(dfTidyDataset) # INVOKE DATA VIEWER
+    
