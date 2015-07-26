@@ -15,11 +15,13 @@ These feature measurement were extracted based on the names containing "-mean()"
 The units for feature measurements (mean, standard deviation) where from the dataset are not modified in any manner.
 
 The tidy dataset is in narrow long format. 
-It contains 4 fields -> 
-    [Subject Identifier(CodeBook.md#field-1), 
-    [Activity Label(CodeBook.md#field-2), 
-    [Feature Measurement Name(CodeBook.md#field-3), 
-    [Measurement Total Average](CodeBook.md#field-4).  
+It contains 4 fields ->
+ 
+    [Subject Identifier](CodeBook.md#field-1), 
+    [Activity Label](CodeBook.md#field-2), 
+    [Feature Measurement Name](CodeBook.md#field-3), 
+    [Measurement Total Average](CodeBook.md#field-4).
+      
 Each row is contains a unique combination of subject identifier, an activity label and a feature measurement name, and the computed average.   
 The computed average was obtained while grouping the subject identifier and activity types with "R" programming operations.
 
