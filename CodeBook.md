@@ -1,6 +1,6 @@
-# CODEBOOK FOR GETDATA TIDY DATA PROJECT 
+# CODEBOOK (TIDY DATA PROJECT) 
 
-## Overview of Codebook:
+## Overview of the Codebook:
 
 The Cookbook provides a detailed data dictionary explanation for the structure of the tidy dataset for this project.
 
