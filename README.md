@@ -6,12 +6,12 @@ The purpose of this project is demonstrate the ability to collect, work with, an
 
 This READ-ME file has the following sections below:
 
-1. Overview
-2. Background and Synopsis
-3. What makes this Tidy
-4. About the R Code -> run_anaylsis.R
-5. Set up & Execution of R Code
-6. Load Tidy Dataset
+1. [Overview](README.md#overview)
+2. [Background and Synopsis](README.md#background-and-synopsis)
+3. [What makes this Tidy](README.md#what-makes-this-tidy)
+4. [About the R Code -> run_anaylsis.R](README.md#about-the-r-code---run_anaylsisr)
+5. [Set up & Execution of R Code](README.md#set-up--execution-of-r-code)
+6. [Load Tidy Dataset](README.md#load-tidy-dataset)
 
 
 ## Overview
