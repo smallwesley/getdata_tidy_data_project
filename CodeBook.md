@@ -71,7 +71,7 @@ List of activity types are restricted to the following 6 actions names:
 
 **NOTES:**
 This field contains a subset of the feature names translated from the original set listed in **features.txt** which can be found in the Samsung dataset directory.
-An explanation of this features.txt is the additional support file, called **features_info.txt**.  Please see ADDENDUM A for the feature info document. 
+An explanation of this features.txt is the additional support file, called **features_info.txt**.  Please see [ADDENDUM A](CodeBook.md#addendum-a) for the feature info document. 
 All constants here have been translated from the original raw form to a clearer human readable format. The list of constants used in our tidy dataset is listed below on the left.  The original feature measurement names are list beside on the right.
 The rules were used to translate convert are listed below the list of measurement names.
 
@@ -200,9 +200,9 @@ This field contains the computed averages each feature measure related to a subj
 
 * * * 
 
-## ADDENDUM A) SAMSUNG FEATURE_INFO DOCUMENT##
+## ADDENDUM A
 
-###Feature Selection### 
+### Feature Selection
 
 The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
 
