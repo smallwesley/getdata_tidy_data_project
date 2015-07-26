@@ -33,15 +33,14 @@ One of the most exciting areas in all of data science right now is wearable comp
 The raw dataset is obtained from:
 
 <https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip>
+*The above section was cited: From the getdata course project instructions.
 
-*** The above section was cited: From the getdata course project instructions***
+i) In addition, a thorough dissertation about Tidy Data is provided by Hadley Wickham in his paper called [Tidy data](http://vita.had.co.nz/papers/tidy-data.pdf) 2014.  
 
-In addition, a thorough dissertation about Tidy Data is provided by Hadley Wickham in his paper called [Tidy data](http://vita.had.co.nz/papers/tidy-data.pdf) 2014.  
-
-There are additonal references made to the summarized lectures notes provided Professor Jeff Leek at
+ii) There are additonal references made to the summarized lectures notes provided Professor Jeff Leek at
 <https://d396qusza40orc.cloudfront.net/getdata/lecture_slides/01_03_componentsOfTidyData.pdf>.
 
-Another reference of summarized notes about Tidy Data are found here: [Keep Your Data Tidy](http://serialmentor.com/blog/2014/7/20/keep-your-data-tidy)
+iii) Another reference of summarized notes about Tidy Data are found here: [Keep Your Data Tidy](http://serialmentor.com/blog/2014/7/20/keep-your-data-tidy)
 <http://serialmentor.com/blog/2014/7/20/keep-your-data-tidy>
 
 ## What makes this Tidy?
