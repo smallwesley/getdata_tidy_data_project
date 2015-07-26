@@ -75,8 +75,8 @@ An explanation of this features.txt is the additional support file, called **fea
 All constants here have been translated from the original raw form to a clearer human readable format. The list of constants used in our tidy dataset is listed below on the left.  The original feature measurement names are list beside on the right.
 The rules were used to translate convert are listed below the list of measurement names.
 
-    {UPDATED MEASUREMENT NAME}                         {ORIGINAL MEASUREMENT NAME}
-    --------------------------                         --------------------------- 
+    {TIDY DATA MEASUREMENT NAME}                       {ORIGINAL MEASUREMENT NAME}
+    ----------------------------                       --------------------------- 
     TimeBodyAccelerationMean-X                         [ tBodyAcc-mean()-X ]
     TimeBodyAccelerationMean-Y                         [ tBodyAcc-mean()-Y ]
     TimeBodyAccelerationMean-Z                         [ tBodyAcc-mean()-Z ]
